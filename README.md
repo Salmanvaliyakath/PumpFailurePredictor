@@ -3,13 +3,13 @@
 
 ## Table of Contents
 1. [Objective](#Objective)
-2. [Exploratory Data Analysis](#1.	Exploratory Data Analysis (EDA))
+2. [Exploratory Data Analysis](#Exploratory Data Analysis (EDA))
 
     
 ## Objective
 Build, Evaluate, and Simulate the deployment of a machine learning model for predictive maintenance, Use the time series sensor readings from an industrial pump.
 
-## 1.	Exploratory Data Analysis (EDA)
+## Exploratory Data Analysis (EDA)
 
 The dataset consists of 1000 data points, representing two classes: failure and non-failure. Each data point is collected at 1-hour intervals.
 
@@ -39,7 +39,7 @@ Based on the correlation matrix,
 - Flow Rate (m³/h): The flow rate shows a slightly skewed distribution, with most values concentrated between 40 and 60 m³/h. This may indicate that pumps typically operate within a consistent flow range.
 
 
-## 2. Data preprocessing
+## Data preprocessing
 
 ### Feature Engineering : 
 
@@ -66,13 +66,13 @@ When working with time series data, it's important to respect the temporal order
 Note: Do not shuffle the time series data as this will break the temporal dependencies.
 
 
-## 3.	Model Development
+## Model Development
 Once the data is prepared, you can now build and train the LSTM model.
 Use the Keras to create a simple LSTM Network, and added dropout to reduce overfit, configure the input and output. and compile the model.
 
 Once the model Build, compile and Trianed with the Training data, The trained model wil store for the fure use
 
-## 4.	Model Evaluation
+## Model Evaluation
 Since it is a classification problem, we used the mtrics such as Precision, Recall and F1 score to evaluate the LSTM model.
 
 Attachin a sample evaluation metrics here with,
@@ -90,10 +90,10 @@ The F1 score need to be improved to get the model production ready, Observations
 
 By looking above, it is very clear that, FN need to be reduced, so the Recall is very important.
 
-## 5.	Data Visualization and Reporting
+## Data Visualization and Reporting
 Relationship between different features and target 'Failure' is shouwn in the Jupyter notebook.
 
-## 6.	Model Deployment Simulation
+## Model Deployment Simulation
 By running the notebook successfully, the model will be build, trained, evaluated and stored in the folder.
 To deploy the model use the main.py file which is a FastAPI app, 
 
@@ -110,14 +110,14 @@ Output: A new csv file will be created with an extra predicted column
 
 Sample predicted file provide in this repo.
 
-## 7.	Bonus Task 
+## Bonus Task 
 
 I have used the class_weights approach to encounter the imbalanced data. 
 
 Use the features such as rolling averages, trend indicators to improve the model efficiency
 Also wanted to try other model like XGBoost model with appropriate feature engineering.
 
-# How to Run
+## How to Run
 
 Clone this repo:
 
