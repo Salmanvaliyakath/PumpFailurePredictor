@@ -135,7 +135,7 @@ Also wanted to try other model like XGBoost model with appropriate feature engin
 
 Clone this repo:
 
-- https://github.com/Salmanvaliyakath/PumpFailurePredictor.git
+- git clone https://github.com/Salmanvaliyakath/PumpFailurePredictor.git
 Open the terminal
 
 Copy your training and testing data to this folder.
