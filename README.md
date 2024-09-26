@@ -3,7 +3,7 @@
 
 ## Table of Contents
 1. [Objective](#Objective)
-2. [Exploratory Data Analysis](# 1.	Exploratory Data Analysis (EDA))
+2. [Exploratory Data Analysis](#1.	Exploratory Data Analysis (EDA))
 
     
 ## Objective
