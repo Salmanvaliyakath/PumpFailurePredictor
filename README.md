@@ -77,12 +77,12 @@ Attachin a sample evaluation metrics here with,
 
 The F1 score need to be improved to get the model production ready, Observations are.
 
-Positive class : failure (1)
-  TP : Model predicts failure, actually failure
-  FP : model predicts failure, actually not failure
-Negative class : non failure (0)
-  TN : Model predict non failure, actual non failure
-  FN : Model predicts non failure, but actual failrue
+- Positive class : failure (1)
+   - TP : Model predicts failure, actually failure
+   - FP : model predicts failure, actually not failure
+- Negative class : non failure (0)
+   - TN : Model predict non failure, actual non failure
+   - FN : Model predicts non failure, but actual failrue
 
 By looking above, it is very clear that, FN need to be reduced, so the Recall is very important.
 
@@ -94,6 +94,7 @@ By running the notebook successfully, the model will be build, trained, evaluate
 To deploy the model use the main.py file which is a FastAPI app, 
 
 Open the python terminal, open the folder,
+
 RUN the "fastapi dev main.py"
 
 Once the endpoint is up and running, I used the Postman to test the API
