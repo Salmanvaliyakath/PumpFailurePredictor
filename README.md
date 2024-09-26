@@ -2,7 +2,10 @@
 # Pump failure Prediction
 
 
-## Data
+## Objective
+Build, Evaluate, and Simulate the deployment of a machine learning model for predictive maintenance, Use the time series sensor readings from an industrial pump.
+
+## 1.	Exploratory Data Analysis (EDA)
 
 We have 1000 data points, cotains 2 classes like failure and non-failure classes. Each data point is collected at 1 Hr intervel, 
 
@@ -12,15 +15,26 @@ As per our analysis,
 - Data is Highly imbalanced with More that 95% non failure and remaining failure cases
 - pressure, flow rate Level and Failure: Shows a moderate positive correlation, indicating that higher pressure levels may lead to pump failure.
 
+### Correlation:
+Find the Correlation between the Features to calculate how effective each features on the target feature.
+Observation : pressure, flow rate Level and Failure: Shows a moderate positive correlation, indicating that higher pressure levels may lead to pump failure.
 
-## 1. Data preprocessing
-
-### class_weights: 
-Since the data is Time series data, and the need to carefully handle the imbalanced data, in the normal case we may introduce over sampling and under sampling using the SMOT method, here this method is inefficient as we require the data in order and cant introduce any synthetic data which may decreas the uality of actual data. class_weights is dictionary, with key is class and value will be its relative importance.
+![image](https://github.com/user-attachments/assets/c73e0a0f-052c-4722-a689-f020d7561d70)
 
 
+### Distribution
 
-## Steps for Preparing Data:
+![image](https://github.com/user-attachments/assets/33aed1c5-b6c5-485b-9331-7ecbb7a4d4ae)
+
+Based on the correlation matrix, 
+
+- Vibration Level: The distribution is centered around 0.5 with slight variation, suggesting most pumps experience low to moderate vibration levels, and no extreme outliers are immediately visible.
+- Temperature (°C): The temperature distribution appears roughly normal, centered around 70°C, with slight variations, suggesting most pumps operate within a narrow temperature range. slight left skewness is visible.
+- Pressure (PSI): The pressure distribution is also fairly normal, centered around 95 PSI, indicating that most pumps are operating within a standard pressure range, with few instances of extreme high or low pressure.
+- Flow Rate (m³/h): The flow rate shows a slightly skewed distribution, with most values concentrated between 40 and 60 m³/h. This may indicate that pumps typically operate within a consistent flow range.
+
+
+## 2. Data preprocessing
 
 ### Feature Engineering : 
 
@@ -31,6 +45,9 @@ time steps: The number of time steps (i.e., how many previous data points to use
 features: The number of variables recorded at each time step (i.e., the number of columns in your dataset).
 
 To create this 3D shape, you typically use a sliding window approach where you take fixed-length sequences of your time series as input, and associate each sequence with the correct output label.
+
+### class_weights: 
+To address the imbalance in time series data, typical approaches like oversampling and undersampling (e.g., using SMOTE) are not suitable here due to the need to maintain the sequential order of the data. Introducing synthetic data could compromise the integrity of the original dataset. Instead, we use class weights, which is a dictionary where the key represents the class and the value indicates its relative importance in training.
 
 ### Normalize the data :
 so that all features have a similar scale. LSTMs perform better when the inputs are scaled, as it helps in stable convergence during training.
@@ -44,28 +61,53 @@ When working with time series data, it's important to respect the temporal order
 Note: Do not shuffle the time series data as this will break the temporal dependencies.
 
 
-## 2.	Exploratory Data Analysis (EDA)
+## 3.	Model Development
+Once the data is prepared, you can now build and train the LSTM model.
+Use the Keras to create a simple LSTM Network, and added dropout to reduce overfit, configure the input and output. and compile the model.
 
-### Correlation:
-Find the Correlation between the Features to calculate how effective each features on the target feature.
-Observation : pressure, flow rate Level and Failure: Shows a moderate positive correlation, indicating that higher pressure levels may lead to pump failure.
+Once the model Build, compile and Trianed with the Training data, The trained model wil store for the fure use
 
-![image](https://github.com/user-attachments/assets/c73e0a0f-052c-4722-a689-f020d7561d70)
+## 4.	Model Evaluation
+Since it is a classification problem, we used the mtrics such as Precision, Recall and F1 score to evaluate the LSTM model.
 
-
-### Distribution
-
-![image](https://github.com/user-attachments/assets/33aed1c5-b6c5-485b-9331-7ecbb7a4d4ae)
-
-vibration_level    0.116976
-temperature_C     -0.049396
-pressure_PSI       0.061247
-flow_rate_m3h     -0.002121
-
-Vibration Level: The distribution is centered around 0.5 with slight variation, suggesting most pumps experience low to moderate vibration levels, and no extreme outliers are immediately visible.
-Temperature (°C): The temperature distribution appears roughly normal, centered around 70°C, with slight variations, suggesting most pumps operate within a narrow temperature range. slight left skewness is visible.
-Pressure (PSI): The pressure distribution is also fairly normal, centered around 95 PSI, indicating that most pumps are operating within a standard pressure range, with few instances of extreme high or low pressure.
-Flow Rate (m³/h): The flow rate shows a slightly skewed distribution, with most values concentrated between 40 and 60 m³/h. This may indicate that pumps typically operate within a consistent flow range.
+Attachin a sample evaluation metrics here with,
+![image](https://github.com/user-attachments/assets/2c5daa27-576d-400b-83fc-648dad8948ed)
 
 
+The F1 score need to be improved to get the model production ready, Observations are.
+
+Positive class : failure (1)
+  TP : Model predicts failure, actually failure
+  FP : model predicts failure, actually not failure
+Negative class : non failure (0)
+  TN : Model predict non failure, actual non failure
+  FN : Model predicts non failure, but actual failrue
+
+By looking above, it is very clear that, FN need to be reduced, so the Recall is very important.
+
+## 5.	Data Visualization and Reporting
+Relationship between different features and target 'Failure' is shouwn in the Jupyter notebook.
+
+## 6.	Model Deployment Simulation
+By running the notebook successfully, the model will be build, trained, evaluated and stored in the folder.
+To deploy the model use the main.py file which is a FastAPI app, 
+
+Open the python terminal, open the folder,
+RUN the "fastapi dev main.py"
+
+Once the endpoint is up and running, I used the Postman to test the API
+
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/4d215563-7cc7-4b41-aa42-94348da4c548">
+
+Input : path to a csv file
+Output: A new csv file will be created with an extra predicted column
+
+Sample predicted file provide in this repo.
+
+## 7.	Bonus Task 
+
+I have used the class_weights approach to encounter the imbalanced data. 
+
+Use the features such as rolling averages, trend indicators to improve the model efficiency
+Also wanted to try other model like XGBoost model with appropriate feature engineering.
 
