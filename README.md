@@ -3,13 +3,13 @@
 
 ## Table of Contents
 1. [Objective](#Objective)
-2. [Exploratory Data Analysis (EDA)](#Exploratory Data Analysis (EDA))
+2. [Exploratory Data Analysis](#Exploratory Data Analysis)
 
     
 ## Objective
 Build, Evaluate, and Simulate the deployment of a machine learning model for predictive maintenance, Use the time series sensor readings from an industrial pump.
 
-## Exploratory Data Analysis (EDA)
+## Exploratory Data Analysis
 
 The dataset consists of 1000 data points, representing two classes: failure and non-failure. Each data point is collected at 1-hour intervals.
 
