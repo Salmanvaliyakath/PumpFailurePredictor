@@ -115,6 +115,13 @@ Also wanted to try other model like XGBoost model with appropriate feature engin
 
 # How to Run
 
+Clone this repo:
+
+- https://github.com/Salmanvaliyakath/PumpFailurePredictor.git
+Open the terminal
+
+Copy your training and testing data to this folder.
+
 install all the dependencies
 - pip install -r requirements.txt
 
