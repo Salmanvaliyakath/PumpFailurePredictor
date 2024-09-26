@@ -113,3 +113,12 @@ I have used the class_weights approach to encounter the imbalanced data.
 Use the features such as rolling averages, trend indicators to improve the model efficiency
 Also wanted to try other model like XGBoost model with appropriate feature engineering.
 
+# How to Run
+
+install all the dependencies
+- pip install -r requirements.txt
+
+To build the Dataset, Train, Evaluate and store the model, Open the model_train.ipynb notebook and run one by one cell,
+
+To Deploy the Model, Run the main.py script, "fastapi dev main.py" to up and run the endpoint (API).
+
