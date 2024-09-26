@@ -122,3 +122,11 @@ To build the Dataset, Train, Evaluate and store the model, Open the model_train.
 
 To Deploy the Model, Run the main.py script, "fastapi dev main.py" to up and run the endpoint (API).
 
+Open the postman application to test the API and pass the input URL and Body.
+
+Or open the command prompt (Ctrl+R, type cmd, press) and 
+
+curl --location 'http://127.0.0.1:8000/predict' \
+--header 'Content-Type: application/json' \
+--data '{"filepath":"hypothetical_pump_failure_dataset_test.csv"}' 
+
