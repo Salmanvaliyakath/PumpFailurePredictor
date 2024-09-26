@@ -7,13 +7,14 @@ Build, Evaluate, and Simulate the deployment of a machine learning model for pre
 
 ## 1.	Exploratory Data Analysis (EDA)
 
-We have 1000 data points, cotains 2 classes like failure and non-failure classes. Each data point is collected at 1 Hr intervel, 
+The dataset consists of 1000 data points, representing two classes: failure and non-failure. Each data point is collected at 1-hour intervals.
 
-As per our analysis, 
-- its a Multivariate time series dataset, ie dataset have multiple features (variables) recorded over a single time.
-- No Missing values
-- Data is Highly imbalanced with More that 95% non failure and remaining failure cases
-- pressure, flow rate Level and Failure: Shows a moderate positive correlation, indicating that higher pressure levels may lead to pump failure.
+### Key observations from the analysis:
+
+- The dataset is a multivariate time series, meaning it contains multiple features (variables) recorded over the same time period.
+- There are no missing values.
+- The data is highly imbalanced, with over 95% of the points representing non-failure cases and the rest representing failure cases.
+- Pressure and flow rate level show a moderate positive correlation with failure, suggesting that higher pressure levels may contribute to pump failures.
 
 ### Correlation:
 Find the Correlation between the Features to calculate how effective each features on the target feature.
@@ -40,9 +41,9 @@ Based on the correlation matrix,
 
 LSTM models expect the input to be in the form of 3D arrays: [samples, time steps, features], Where:
 
-samples: Number of sequences (i.e., rows of data representing each example in the dataset).
-time steps: The number of time steps (i.e., how many previous data points to use for each prediction).
-features: The number of variables recorded at each time step (i.e., the number of columns in your dataset).
+- samples: Number of sequences (i.e., rows of data representing each example in the dataset).
+- time steps: The number of time steps (i.e., how many previous data points to use for each prediction).
+- features: The number of variables recorded at each time step (i.e., the number of columns in your dataset).
 
 To create this 3D shape, you typically use a sliding window approach where you take fixed-length sequences of your time series as input, and associate each sequence with the correct output label.
 
