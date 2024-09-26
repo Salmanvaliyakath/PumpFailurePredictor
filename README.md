@@ -1,7 +1,22 @@
 
 # Pump failure Prediction
 
+## Table of Contents
+1. [Project Overview](#project-overview)
+2. [Objective](#objective)
+3. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+4. [Data Preprocessing](#data-preprocessing)
+5. [Model Development](#model-development)
+6. [Model Evaluation](#model-evaluation)
+7. [Data Visualization and Reporting](#data-visualization-and-reporting)
+8. [Model Deployment Simulation](#model-deployment-simulation)
+9. [Bonus Task](#bonus-task)
+10. [How to Run](#how-to-run)
+11. [Contributing](#contributing)
+12. [License](#license)
+13. [Contact](#contact)
 
+    
 ## Objective
 Build, Evaluate, and Simulate the deployment of a machine learning model for predictive maintenance, Use the time series sensor readings from an industrial pump.
 
