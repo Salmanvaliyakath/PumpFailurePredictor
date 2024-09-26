@@ -2,7 +2,7 @@
 # Pump failure Prediction
 
 ## Table of Contents
-1. [Project Overview](#project-overview)
+1. [Objective](##Objective)
 2. [Objective](#objective)
 3. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
 4. [Data Preprocessing](#data-preprocessing)
