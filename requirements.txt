@@ -1,0 +1,5 @@
+keras
+tensorflow
+optree
+numpy==1.16.5
+fastapi[standard]
